@@ -15,6 +15,6 @@ def home():
 def prize(amount):
     prize = requests.post('http://service4:5003/prize1', data=amount)
     info = Prize(string=amount, prize=str(prize.text))
-    db.session.add(info)
-    db.session.commit()
+   # db.session.add(info)
+  #  db.session.commit()
     return render_template('prize.html', title='prize', amount=amount, prize=prize.text)
