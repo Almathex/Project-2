@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  service1:
+    build: ./service1
+    image: almathex/service1
+    deploy:
+      replicas: 2
+    ports:
+    - published: 5000
+      target: 5000
+  service2:
+    build: ./service2
+    image: almathex/service2
+    deploy:
+      replicas: 2
+    ports:
+    - published: 5001
+      target: 5001
+  service3:
+    build: ./service3
+    image: almathex/service3
+    deploy:
+      replicas: 2
+    ports: 
+    - published: 5002
+      target: 5002
+  service4:
+    build: ./service4
+    image: almathex/service4
+    deploy:
+      replicas: 2
+    ports: 
+    - published: 5003
+      target: 5003

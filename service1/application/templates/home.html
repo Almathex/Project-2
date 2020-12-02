@@ -1,14 +1,6 @@
-{% extends "layout.html" %}
-
+{% extends 'layout.html' %}
 {% block body_content %}
-<div class="container-fluid">
-	<h1>Welcome to the prize simulator</h1>
-Your random string: {{ username }}
-<br><br>
-<a href="{{ url_for('prize', prizename=username) }}" class="btn btn-info" role="button">Click to see if you won!</a>
-</div>
-
-
-
-	
+    <div class="home">
+        <a href="{{ url_for('prize') }}">Generate</a>
+    </div>
 {% endblock body_content %}
