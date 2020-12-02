@@ -1,6 +1,9 @@
 {% extends 'layout.html' %}
 {% block body_content %}
-    <div class="home">
-        <a href="{{ url_for('prize') }}">Generate</a>
+    <div class="container-fluid">
+
+	    Your random letter number combination is {{string}}
+	    <br><br>
+        <a href="{{ url_for('prize', amount=string) }}">Generate</a>
     </div>
 {% endblock body_content %}
