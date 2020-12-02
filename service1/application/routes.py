@@ -10,3 +10,10 @@ def home():
     username = str(four_numbers.text)+four_letters.text
     return render_template('home.html',title='home', username=username)
 
+@app.route('/prize/<prizetoken>', methods-['GET', 'POST')]
+def prize(prizetoken):
+    prize = requests.post('http://service4:5003/prize1', data=prizename)
+    info = Prize(username=prizename, prize=prize.text)
+    db.session.add(info)
+    db.session.commit()
+    return render_template('prize.html', title='prize', prizename=prizename, prize=prize.text)
