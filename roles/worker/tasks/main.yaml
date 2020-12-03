@@ -1,0 +1,20 @@
+- name: Leave Docker Swarm
+  docker_swarm:
+    state: absent
+    force: true
+
+- name: Join Docker Swarm - Worker 1
+  docker_swarm:
+    state: join
+    advertise_addr: 10.154.0.40  
+    #change ip
+    join_token: "{{ hostvars['join_token']['value'] }}"
+    remote_addrs: [ "10.154.0.43:2377" ] 
+
+- name: Join Docker Swarm - Worker 2
+  docker_swarm:
+    state: join
+    advertise_addr: 10.154.0.41  
+    #change ip
+    join_token: "{{ hostvars['join_token']['value'] }}"
+    remote_addrs: [ "10.154.0.43:2377" ] 

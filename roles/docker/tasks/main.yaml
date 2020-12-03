@@ -1,0 +1,53 @@
+- name: Install Requirements for Docker
+  apt:
+    pkg: 
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+    state: latest
+    update_cache: true
+
+- name: Add official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+
+- name: Add apt repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename|lower }} stable
+
+
+- name: Install Docker
+  apt:
+    pkg:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    state: latest
+    update_cache: true
+
+- name: Install Python3
+  apt:
+    name: python3
+    state: latest
+    update_cache: true
+
+- name: Install Pip3
+  apt:
+    name: python3-pip
+    state: latest
+    update_cache: true
+
+- name: Install setuptools
+  pip:
+    name: setuptools
+    executable: pip3
+    state: latest
+
+- name: Install Docker SDK
+  pip:
+    name: docker
+    state: latest
