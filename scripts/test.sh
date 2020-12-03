@@ -14,8 +14,8 @@ cd ..
 cd service3
 pip3 install -r requirements.txt
 pytest --cov ./application
-cd service4
 cd ..
+cd service4
 pip3 install -r requirements.txt
 pytest --cov ./application
 
