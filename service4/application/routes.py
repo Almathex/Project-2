@@ -7,9 +7,9 @@ def prize1():
     amount = request.data.decode('utf-8')
     if amount[0] == '3' or amount[4] == 'L':
         prize = 'You win £300'
-    elif amount[0] == '5' or amount[4] == 'o':
+    elif amount[4] == 'O':
         prize = 'You win £5000'
-    elif amount[0] == '7' or amount[4] == 'A':
+    elif amount[0] == '7' and amount[4] == 'A':
         prize = 'You win £70000'
     else: 
         prize = "Unfortunatly you didnt win this time!"
