@@ -1,1 +1,1 @@
-ansible-playbook playbook.yaml
+ansible-playbook -v -i inventory playbook.yaml -y -y -y
