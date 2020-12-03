@@ -1,3 +1,6 @@
 #!/bin/sh
 pip3 install ansible
-~/.local/bin/ansible-playbook ansible-playbook -v -i inventory playbook.yaml -y -y -y
+~/.local/bin/ansible-playbook -v -i inventory playbook.yaml
+yes
+yes
+yes
