@@ -1,0 +1,6 @@
+[manager]
+project-manager
+
+[worker]
+project-worker1
+project-worker2
