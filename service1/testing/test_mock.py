@@ -15,7 +15,7 @@ class TestResponse(TestBase):
 
     def test_prize(self):
 
-        response = self.client.get(url_for('prize'))
+        response = self.client.get(url_for('prize'), amount = "1111AAaa")
         self.assertEqual(response.status_code, 500)
 
     def test_endprize(self):
@@ -23,7 +23,7 @@ class TestResponse(TestBase):
         with requests_mock.mock() as g:
             g.get("http://service2:5001/four_numbers", text="1997")
             g.get("http://service3:5002/four_letters", text="ALex")
-            g.get("http://service4:5003/price/<amount>", text="You win £70000")
+            g.get("http://service4:5003/price/1997ALex", text="You win £70000")
             response = self.client.get(url_for('prize'))
             self.assertEqual(response.status_code, 200)
 

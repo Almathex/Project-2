@@ -8,7 +8,7 @@ pipeline{
 	}
         stage('Build'){
             steps{
-               bash './scripts/build.sh'
+               sh './scripts/build.sh'
             }
         }
         stage('Deploy'){
