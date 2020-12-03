@@ -28,3 +28,15 @@ services:
     - target: 5003
       published: 5003
       protocol: tcp   
+  mysql:
+    image: mysql:5.7
+    volumes:
+        - "mydb:/var/lib/mysql"
+    ports: 
+    - target: 3306
+      published: 3306 
+    environment: 
+      MYSQL_DATABASE: prize
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1  
+volumes: 
+  mydb:    
