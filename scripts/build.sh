@@ -1,3 +1,3 @@
 #!/bin/sh
-docker-compose down --rmi all
-docker-compose build
+sudo docker-compose down --rmi all
+sudo docker-compose build
