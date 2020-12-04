@@ -1,7 +1,7 @@
 from application import app, db
 from flask import render_template, request, Response, redirect, url_for
 import requests
-from application.models import Prize
+from application.models import prize
 
 
 @app.route('/', methods=['GET'])
