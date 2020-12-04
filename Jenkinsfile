@@ -6,6 +6,11 @@ pipeline{
 		sh './scripts/test.sh'
 	    }
 	}
+        stage('Ansible'){
+            steps{
+                sh './scripts/ansible.sh'
+            }
+        }
         stage('Build'){
             steps{
                sh './scripts/build.sh'
