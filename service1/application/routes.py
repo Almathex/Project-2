@@ -16,7 +16,7 @@ def prize(amount):
     prize = requests.post('http://service4:5003/prize1', data=amount)
     prizes = prize(
             random_string = str(amount),
-            winnings = str(prize)
+            winnings = prize
     )    
     db.session.add(prizes)
     db.session.commit()
