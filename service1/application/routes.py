@@ -17,6 +17,7 @@ def prize(amount):
     prizes = prize(
             random_string = str(amount),
             winnings = str(prize)
+    )    
     db.session.add(prizes)
     db.session.commit()
     return render_template('prize.html', title='prize', amount=amount, prize=prize.text)
