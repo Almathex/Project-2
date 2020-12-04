@@ -15,8 +15,8 @@ def prize():
     string = str(four_numbers.text)+four_letters.text
     prizetwo = requests.post('http://service4:5003/prize1', data=string)
     prizes = prize(
-            random_string = (string),
-            winnings = prizetwo
+        string,
+        prizetwo
     )    
     db.session.add(prizes)
     db.session.commit()
