@@ -13,11 +13,11 @@ def home():
 
 @app.route('/prize/<amount>', methods=['GET', 'POST'])
 def prize(amount):
-    prize = requests.post('http://service4:5003/prize1', data=amount)
+    prized = requests.post('http://service4:5003/prize1', data=amount)
     prizes = Prize(
             random_string = str(amount),
-            prize = str(prize)
+            prize = str(prized)
             )
     db.session.add(prizes)
     db.session.commit()
-    return render_template('prize.html', title='prize', amount=amount, prize=prize.text)
+    return render_template('prize.html', title='prize', amount=amount, prize=prized.text)
