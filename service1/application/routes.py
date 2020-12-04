@@ -1,7 +1,7 @@
 from application import app, db
 from flask import render_template, request, Response, redirect, url_for
 import requests
-from application.models import prize
+from application.models import prizedb
 
 
 @app.route('/', methods=['GET'])
@@ -14,7 +14,7 @@ def prize():
     four_letters = requests.get('http://service3:5002/four_letters')
     string = str(four_numbers.text)+four_letters.text
     prizetwo = requests.post('http://service4:5003/prize1', data=string)
-    prizes = prize(
+    prizes = prizedb(
         string,
         prizetwo
     )    
