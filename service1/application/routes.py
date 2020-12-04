@@ -6,7 +6,7 @@ from application.models import prize
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('home.html',title='home', string=string)
+    return render_template('home.html',title='home')
 
 @app.route('/prize/', methods=['GET', 'POST'])
 def prize():
