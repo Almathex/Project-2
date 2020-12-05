@@ -1,5 +1,5 @@
 #!/bin/sh
-ssh manager << EOF
+ssh master << EOF
 docker pull almathex/service1:latest
 docker pull almathex/service2:latest
 docker pull almathex/service3:latest
