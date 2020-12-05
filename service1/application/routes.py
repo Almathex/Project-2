@@ -6,18 +6,15 @@ from application.models import prizedb
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('home.html',title='home')
-
-@app.route('/prize/', methods=['GET', 'POST'])
-def prize():
     four_numbers = requests.get('http://service2:5001/four_numbers')
     four_letters = requests.get('http://service3:5002/four_letters')
-    string = str(four_numbers.text)+four_letters.text
-    prizetwo = requests.post('http://service4:5003/prize1', data=string)
-    prizes = prizedb(
-        string,
-        prizetwo
-    )    
+    code = str(four_numbers.text)+four_letters.text
+    return render_template('home.html',title='home')
+
+@app.route('/prize/<code>', methods=['GET', 'POST'])
+def prize(amount):
+    winning = requests.post('http://service4:5003/prize1', data=amount)
+    prizes = prizedb(code=amount,reward=winning)    
     db.session.add(prizes)
     db.session.commit()
-    return render_template('prize.html', title='prize', string=string, prizetwo=prizetwo.text)
+    return render_template('prize.html', title='prize', amount=amount, winning=winning.text)
