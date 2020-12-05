@@ -11,10 +11,10 @@ def home():
     code = str(four_numbers.text)+four_letters.text
     return render_template('home.html',title='home', code=code)
 
-@app.route('/prize/<amount>', methods=['GET', 'POST'])
-def prize(amount):
-    winning = requests.post('http://service4:5003/prize1', data=amount)
-    prizes = prizedb(code=amount,reward=winning)    
+@app.route('/prize/<code>', methods=['GET', 'POST'])
+def prize(code):
+    winning = requests.post('http://service4:5003/prize1', data=code)
+    prizes = prizedb(code=code,reward=winning)    
     db.session.add(prizes)
     db.session.commit()
-    return render_template('prize.html', title='prize', amount=amount, winning=winning.text)
+    return render_template('prize.html', title='prize', code=code, winning=winning.text)
