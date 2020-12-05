@@ -11,7 +11,7 @@ def home():
     code = str(four_numbers.text)+four_letters.text
     return render_template('home.html',title='home', code=code)
 
-@app.route('/prize/<code>', methods=['GET', 'POST'])
+@app.route('/prize/<amount>', methods=['GET', 'POST'])
 def prize(amount):
     winning = requests.post('http://service4:5003/prize1', data=amount)
     prizes = prizedb(code=amount,reward=winning)    
