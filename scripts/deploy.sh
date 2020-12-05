@@ -1,5 +1,5 @@
 #!/bin/sh
-ssh master << EOF
+ssh jenkins@project-manager -o StrictHostKeyChecking=no << EOF
 docker pull almathex/service1:latest
 docker pull almathex/service2:latest
 docker pull almathex/service3:latest
