@@ -1,6 +1,18 @@
 [manager]
 project-manager
 
+[manager:vars]
+ansible_user=jenkins
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_files=~/.ssh/id_rsa
+ansible_python_interpreter=/usr/bin/python3
+
 [worker]
 project-worker1
 project-worker2
+
+[worker:vars]
+ansible_user=jenkins
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_files=~/.ssh/id_rsa
+ansible_python_interpreter=/usr/bin/python3
