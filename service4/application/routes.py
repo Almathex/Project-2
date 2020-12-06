@@ -2,7 +2,7 @@ from application import app
 from flask import request, Response
 from random import randint
 
-#@app.route('/prize1', methods = ['POST'])
+@app.route('/prize1', methods = ['POST'])
 def prize1():
     code = request.data.decode('utf-8')
     if code[0] == '3' or code[4] == 'L':
