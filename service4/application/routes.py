@@ -18,9 +18,9 @@ from random import randint
 def prize2():
     code = request.data.decode('utf-8')
     if code[0] == '1' or code[4] == 'E':
-       winning == 'You won a laptop!'
+       winning = 'You won a laptop!'
     elif code[0] == '2':
-       winning == 'You won a car!'
+       winning = 'You won a car!'
     elif code [0] == '4':
        winning = 'You won a house!'
     else:
