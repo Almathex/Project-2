@@ -3,12 +3,12 @@
   roles:
   - docker
 
-- hosts: manager1
+- hosts: managers
   become: yes
   roles:
   - master
 
-- hosts: worker
+- hosts: workers
   become: yes
   roles:
   - worker
