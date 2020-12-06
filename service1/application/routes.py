@@ -17,4 +17,7 @@ def prize(code):
     prizes = prizedb(code=code, reward=winning.text)    
     #db.session.add(prizes)
     #db.session.commit()
+    print(winning.text)
+    print(reward.text)
     return render_template('prize.html', title='prize', code=code, winning=winning.text)
+    
