@@ -3,10 +3,9 @@
     state: absent
     force: true
 
-- name: Join Docker Swarm - Worker 1
+- name: "Join a swarm"
   docker_swarm:
     state: join
-    advertise_addr: 10.154.0.55  
-    #change ip
-    join_token: "{{ hostvars['join_token']['value'] }}"
-    remote_addrs: [ "10.154.0.53:2377" ] 
+    remote_addrs: [ "manager:2377" ]  
+    advertise_addr: "worker-1"
+    join_token: "{{ hostvars['token']['value'] }}"
