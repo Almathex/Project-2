@@ -8,7 +8,7 @@ from application.models import prizedb
 def home():
     four_numbers = requests.get('http://service2:5001/four_numbers')
     four_letters = requests.get('http://service3:5002/four_letters')
-    code = str(four_numbers.text)+four_letters.text
+    code = str(four_numbers.text)+str(four_letters.text)
     return render_template('home.html',title='home', code=code)
 
 @app.route('/prize/<code>', methods=['GET', 'POST'])
