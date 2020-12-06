@@ -1,5 +1,5 @@
 [managers]
-manager-1
+manager1
 
 [managers:vars]
 ansible_user=jenkins
@@ -11,7 +11,7 @@ ansible_python_interpreter=/usr/bin/python3
 worker
 
 
-[worker:vars]
+[workers:vars]
 ansible_user=jenkins
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ansible_ssh_private_key_files=~/.ssh/id_rsa
