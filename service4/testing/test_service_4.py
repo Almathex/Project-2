@@ -29,7 +29,7 @@ class TestResponse(TestBase):
     def test_prize2letter(self):
         response = self.client.post(
             url_for('prize1'),
-            data="4674OJlw",
+            data="9674OJlw",
             follow_redirects=True
         )
         self.assertIn(b"You win 5000 pound", response.data)
