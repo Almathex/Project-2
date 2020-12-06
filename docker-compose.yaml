@@ -8,9 +8,9 @@ services:
       published: 5000
       protocol: tcp
     deploy:
-      replicas: 3
+      replicas: 1
     depends_on:
-      - database 
+      - database
     environment:
       - MYSQL_ROOT_PASSWORD=root  
   service2:
@@ -18,31 +18,25 @@ services:
     build: ./service2
     ports:
     - target: 5001
-      published: 5001
       protocol: tcp
+    deploy:
+      replicas: 1
   service3:    
     image: almathex/service3:latest
     build: ./service3 
     ports:
     - target: 5002
-      published: 5002
       protocol: tcp
+    deploy:
+      replicas: 1  
   service4:
     image: almathex/service4:latest
     build: ./service4
     ports:
     - target: 5003
-      published: 5003
       protocol: tcp
-  nginx:
-    image: nginx:alpine
-    ports:
-     - target: 80
-       published: 80
-       protocol: tcp
     deploy:
       replicas: 1
-       
   database:
     image: almathex/database:latest
     build: ./database 

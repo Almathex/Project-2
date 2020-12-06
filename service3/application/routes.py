@@ -4,7 +4,7 @@ import string
 import random
 from random import randint
 
-@app.route('/generator/four_letters', methods = ['GET'])
+@app.route('/four_letters', methods = ['GET'])
 def four_letters():
     result = ''.join(random.choices(string.ascii_uppercase,k=2))
     result1 = ''.join(random.choices(string.ascii_lowercase,k=2))

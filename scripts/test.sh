@@ -16,7 +16,4 @@ pytest --cov ./application
 cd ..
 cd service4
 pytest --cov ./application
-
-deactivate
-
-rm -rf venv
+cd ..

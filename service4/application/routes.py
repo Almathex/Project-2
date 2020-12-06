@@ -4,14 +4,14 @@ from random import randint
 
 @app.route('/prize1', methods = ['POST'])
 def prize1():
-    amount = request.data.decode('utf-8')
-    if amount[0] == '3' or amount[4] == 'L':
-        prize = 'You win 300 pound'
-    elif amount[4] == 'O':
-        prize = 'You win 5000 pound'
-    elif amount[0] == '7' and amount[4] == 'A':
-        prize = 'You win 70000 pound'
+    code = request.data.decode('utf-8')
+    if code[0] == '3' or code[4] == 'L':
+        winning = 'You win 300 pound'
+    elif code[4] == 'O':
+        winning = 'You win 5000 pound'
+    elif code[0] == '7' and code[4] == 'A':
+        winning = 'You win 70000 pound'
     else: 
-        prize = "Unfortunatly you didnt win this time!"
-    return Response(prize, mimetype= 'text/plain')
+        winning = "Unfortunatly you didnt win this time!"
+    return Response(winning, mimetype= 'text/plain')
                 

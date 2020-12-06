@@ -2,8 +2,7 @@
 {% block body_content %}
     <div class="container-fluid">
 
-	    Your random letter number combination is {{string}}
 	    <br><br>
-        <a href="{{ url_for('prize', amount=string) }}">Generate</a>
+        <a href="{{ url_for('prize', code=code ) }}">See if you've won</a>
     </div>
 {% endblock body_content %}
