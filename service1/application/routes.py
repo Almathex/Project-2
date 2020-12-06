@@ -14,7 +14,7 @@ def home():
 @app.route('/prize/<code>', methods=['GET', 'POST'])
 def prize(code):
     winning = requests.post('http://service4:5003/prize1', data=code)
-    prizes = prizedb(code=code,reward=winning)    
+    prizes = prizedb(code=code, reward=winning)    
     db.session.add(prizes)
     db.session.commit()
     return render_template('prize.html', title='prize', code=code, winning=winning.text)
