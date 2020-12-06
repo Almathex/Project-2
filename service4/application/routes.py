@@ -6,12 +6,12 @@ from random import randint
 def prize1():
     amount = request.data.decode('utf-8')
     if amount[0] == '3' or amount[4] == 'L':
-        prize = 'You win 300 pound'
+        winning = 'You win 300 pound'
     elif amount[4] == 'O':
-        prize = 'You win 5000 pound'
+        winning = 'You win 5000 pound'
     elif amount[0] == '7' and amount[4] == 'A':
-        prize = 'You win 70000 pound'
+        winning = 'You win 70000 pound'
     else: 
-        prize = "Unfortunatly you didnt win this time!"
-    return Response(prize, mimetype= 'text/plain')
+        winning = "Unfortunatly you didnt win this time!"
+    return Response(winning, mimetype= 'text/plain')
                 
