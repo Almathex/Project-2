@@ -1,5 +1,5 @@
 #!/bin/sh
-ssh manager -o StrictHostKeyChecking=no << EOF
+ssh manager1 -o StrictHostKeyChecking=no << EOF
 sudo docker pull almathex/service1:latest
 sudo docker pull almathex/service2:latest
 sudo docker pull almathex/service3:latest
