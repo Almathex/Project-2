@@ -1,24 +1,17 @@
-- name: Leave Swarm
-  docker_swarm:
-    state: absent
-    force: true
+- name: clone git 
+  git:
+    repo: https://github.com/almathex/Project-2.git
+    dest: /home/Project-2
+    update: yes
 
-- name: Initialise Docker Swarm
+- name: "make the swarm"
   docker_swarm:
     state: present
-
-
-- name: Inspect Swarm 
-  docker_swarm:
-    state: inspect
+- name: "Get swarm info"
+  docker_swarm_info:
   register: swarm_info
 
-
-- name: Inspect Swarm Nodes
-  docker_swarm_info:
-    nodes: yes
-
-- name: Export Variable
+- name: "Get a join token"
   add_host:
     name: "join_token"
-    value: "{{ swarm_info.swarm_facts.JoinTokens.Worker }}"
+    value: "{{ swarm_info['swarm_facts']['JoinTokens']['Worker'] }}"
