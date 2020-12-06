@@ -14,7 +14,7 @@ class TestResponse(TestBase):
             data="3123BRtf",
             follow_redirects=True
         )
-        self.assertIn(b"You win 300 pound", response.data)
+        self.assertIn(b"You won 300 pounds!", response.data)
 
 
     def test_prize1letter(self):
@@ -23,7 +23,7 @@ class TestResponse(TestBase):
             data="2674LJlw",
             follow_redirects=True
         )
-        self.assertIn(b"You win 300 pound", response.data)
+        self.assertIn(b"You won 300 pounds!", response.data)
     
 
     def test_prize2letter(self):
@@ -32,7 +32,7 @@ class TestResponse(TestBase):
             data="9674OJlw",
             follow_redirects=True
         )
-        self.assertIn(b"You win 5000 pound", response.data)
+        self.assertIn(b"You won 5000 pounds!", response.data)
 
     def test_prize3numberandletter(self):
         response = self.client.post(
@@ -40,7 +40,7 @@ class TestResponse(TestBase):
             data="7999AYup",
             follow_redirects=True
         )
-        self.assertIn(b"You win 70000 pound", response.data)
+        self.assertIn(b"You won 70000 pounds!", response.data)
 
 
     def test_prizenone(self):
@@ -51,3 +51,34 @@ class TestResponse(TestBase):
         )
         self.assertIn(b"Unfortunatly you didnt win this time!", response.data)
 
+#    def test_prizelapnumber(self):
+#        response = self.client.post(
+#            url_for('prize2'),
+#            data="1123BRtf",
+#            follow_redirects=True
+#        )
+#        self.assertIn(b"You won a laptop!", response.data)
+
+#    def test_prizelapletter(self):
+#        response = self.client.post(
+#            url_for('prize2'),
+#            data="2674EJlw",
+#            follow_redirects=True
+#        )
+#        self.assertIn(b"You won a laptop!", response.data)
+#
+#    def test_prizecarnumber(self):
+#        response = self.client.post(
+#            url_for('prize2'),
+#            data="2674WJlw",
+#            follow_redirects=True
+#        )
+#        self.assertIn(b"You won a car!", response.data)
+#   
+#   def test_prizehouse(self):
+#       response = self.client.post(
+#           url_for('prize2'),
+#           data="4444CAsh",
+#           follow_redirects=True
+#       )
+#       self.assertIn(b"You won a house!", response.data)
