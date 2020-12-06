@@ -29,6 +29,12 @@
     state: latest
     update_cache: true
 
+- name: "add user to the docker group"
+  user:
+        name: "jenkins"
+        group: docker
+        state: present    
+
 - name: Install Python3
   apt:
     name: python3
