@@ -3,7 +3,7 @@
   roles:
   - docker
 
-- hosts: manager
+- hosts: manager1
   become: yes
   roles:
   - master
