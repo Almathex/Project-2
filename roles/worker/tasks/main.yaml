@@ -7,5 +7,5 @@
   docker_swarm:
     state: join
     remote_addrs: 10.154.0.55  
-    join_token: "{{ hostvars['token']['value'] }}"
-    remote_adress: [ "10.154.0.53:2377"]
+    join_token: "{{ hostvars['join_token']['value'] }}"
+    remote_adress: [ "10.154.0.53:2377" ]
