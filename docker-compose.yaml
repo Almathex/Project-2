@@ -11,9 +11,6 @@ services:
       replicas: 3
     depends_on:
       - database
-      - service2
-      - service3
-      - service4
     environment:
       - MYSQL_ROOT_PASSWORD=root  
   service2:
