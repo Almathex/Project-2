@@ -22,7 +22,7 @@ def prize2():
     elif code[0] == '2':
        winning == 'You won a car!'
     elif code [0] == '4':
-       winning = 'You won a house!':
+       winning = 'You won a house!'
     else:
        winning = "Unfortunatly you didnt win this time!"
     return Response(winning, mimetype= 'text/plain')                
