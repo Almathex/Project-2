@@ -8,4 +8,4 @@
     state: join
     remote_addrs: 10.154.0.55  
     join_token: "{{ hostvars['join_token']['value'] }}"
-    remote_addrs: [ "10.154.0.53:2377" ]
+    remote_addrs: [ "10.154.0.55:2377" ]
