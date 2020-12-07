@@ -12,14 +12,16 @@ from application import app, db
 
 class TestBase(TestCase):
     def create_app(self):
-        config_name = 'test'
-        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
+        app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///",
+        SECRET_KEY='TEST_SECRET_KEY', 
+        DEBUG=True)
         return app
     
     def setUp(self):
-        db.session.commit()
-        db.drop_all()
         db.create_all()
+        testcode = prizedb(code='1234ABcd', reward="Unfortunatly you didnt win this time!")
+        db.session.add(testcode)
+        db.session.commit()
 
     def tearDown(self):
         db.session.remove()
