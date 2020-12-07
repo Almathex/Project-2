@@ -44,7 +44,7 @@ On the Jenkins machine i started off installing jenkins, once that was complete 
 # Risk Assessment
 ![RISK](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture14141.PNG?raw=True)
 # Service Infrastructure
-![Infra](https://github.com/Almathex/Project-2/blob/main/Documentation/infa.PNG?raw=True)
+![Infa](https://github.com/Almathex/Project-2/blob/main/Documentation/infa.PNG?raw=True)
 # CI Pipeline
 ![CIpipe](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture1234.PNG?raw=True)
 # GCP
@@ -69,13 +69,13 @@ I then need to make a playbook.yaml file and define which hosts (defined in the 
 ![SWARM](https://github.com/Almathex/Project-2/blob/main/Documentation/ansible.PNG?raw=True)
 # Docker
 I make Dockerfiles in each service in order to build images of them, exposing servies (1,2,3,4) to port 500(0/1/2/3) respectivly. I then make a docker-compose.yaml which makes use of configuration files to build all of the containers at once and builds and deploys them as a service. In my script for the jenkins Pipeline I login to docker (having previously done so), stop and remove any previously running images, build my new images and push them to DockerHub.
-![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot.png?raw=True)
+![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot%20.png?raw=True)
 Here are my build logs.
 # Docker Swarm
 I ssh into my swarm manager using StrictHostKeyChecking=no and pull the latest images for my services and clone and move into a directory, I then docker stack deploy accross the swarm using the docker-compose.yaml and giving my stack the name randprize.
 # NGINX
 I then spin up a NGINX VM on GCP and create a nginx.conf, I then install docker and docker run an NGINX container. 
-![NGINX](https:///github.com/Almathex/Project-2/blob/main/Documentation/infastr.PNG?raw=True)
+![NGINX](https://github.com/Almathex/Project-2/blob/main/Documentation/infastr.PNG?raw=True)
 Nginx acts as a load balancer and evenly distributes traffic between the manager and worker node.
 # Demo
 Here is the home page for the app, very simple
