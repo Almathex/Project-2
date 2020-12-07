@@ -35,8 +35,6 @@ I neeed 3 new Virtual Machines:
 - Worker
 On the Jenkins machine i started off installing jenkins, once that was complete and set up, I gave jenkins sudo permissions by using sudo visudo and as the jenkins user I installed docker and docker-compose, still as the jenkins user I then generated keys using ssh-keygen -t rsa. I then placed the public key from the jenkins user on the jenkins machine into the Manager and Worker VMs. Once the other two (Manager, Worker) machines where created I used the jenkins machine to ssh into them. I also, still as the jenkins user, did docker login to provide my dockerhub username and password. Then through the jenkins app on port 8080 I set up a webhook for my git repository and enabled it on git, this allows for a rolling update. 
 
-# CI Pipeline
-![CIpipe](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture1234.PNG?raw=True)
 # ERD
 ![ERD](https://github.com/Almathex/Project-2/blob/main/Documentation/erd.PNG?raw=True)
 # Trello Board
@@ -69,30 +67,44 @@ I then need to make a playbook.yaml file and define which hosts (defined in the 
 ![SWARM](https://github.com/Almathex/Project-2/blob/main/Documentation/ansible.PNG?raw=True)
 # Docker
 I make Dockerfiles in each service in order to build images of them, exposing servies (1,2,3,4) to port 500(0/1/2/3) respectivly. I then make a docker-compose.yaml which makes use of configuration files to build all of the containers at once and builds and deploys them as a service. In my script for the jenkins Pipeline I login to docker (having previously done so), stop and remove any previously running images, build my new images and push them to DockerHub.
+
 ![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot%20.png?raw=True)
+
 Here are my build logs.
 # Docker Swarm
 I ssh into my swarm manager using StrictHostKeyChecking=no and pull the latest images for my services and clone and move into a directory, I then docker stack deploy accross the swarm using the docker-compose.yaml and giving my stack the name randprize.
 # NGINX
-I then spin up a NGINX VM on GCP and create a nginx.conf, I then install docker and docker run an NGINX container. 
+I then spin up a NGINX VM on GCP and create a nginx.conf, I then install docker and use docker run a NGINX container. 
+
 ![NGINX](https://github.com/Almathex/Project-2/blob/main/Documentation/infastr.PNG?raw=True)
+
 Nginx acts as a load balancer and evenly distributes traffic between the manager and worker node.
 # Demo
 Here is the home page for the app, very simple
+
 ![first](https://github.com/Almathex/Project-2/blob/main/Documentation/service1.PNG?raw=True)
+
 Here is the prize page
+
 ![last](https://github.com/Almathex/Project-2/blob/main/Documentation/service4.PNG?raw=True)
+
 Yay I won!
 # Webhook 
 During the demo I was asked to preform a rolling update, I was able to do this by setting up a webhook, first on jenkins then on github using the jenkins ip.
+
 ![jenkwebhook](https://github.com/Almathex/Project-2/blob/main/Documentation/jenk.PNG?raw=True)
 ![gitwebhook](https://github.com/Almathex/Project-2/blob/main/Documentation/webhook.PNG?raw=True)
+
 I am no set up so that any time I push to the repository, jenkins automatically builds and deploys the new version.
+
 ![branch](https://github.com/Almathex/Project-2/blob/main/Documentation/branch.PNG?raw=True)
+
 During the demo I merged my develop branch into my main to get the following change, without downtime.
+
 ![webhook](https://github.com/Almathex/Project-2/blob/main/Documentation/secondit.PNG?raw=True)
 # Database
 Here is a working database that persists
+
 ![DB](https://github.com/Almathex/Project-2/blob/main/Documentation/db.PNG?raw=True)
 # Errors
-I had multiple errors throughout this project, it first started with getting the database container set up, an error i have made after setting the database up is leaving sensative infomation in my code. I was also having trouble running NGINX from my jenkins VM so I made another VM only for NGINX which fixed the issue.
+I had multiple errors throughout this project, it first started with getting the database container set up, an error i have made after setting the database up is leaving sensative infomation in my code. I was also having trouble running NGINX from my jenkins VM so I made another VM only for NGINX which fixed the issue. 
