@@ -10,4 +10,4 @@ class TestBase(TestCase):
 class TestNumber(TestBase):
     def test_number(self):
         response = self.client.get(url_for('four_numbers'))
-        self.assertEquals(response.status_code,200)
+        self.assertEqual(response.status_code,200)
