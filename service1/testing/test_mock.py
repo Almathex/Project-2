@@ -1,29 +1,29 @@
-from flask import url_for
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_testing import TestCase
 from unittest.mock import patch
-from requests.api import request
-import requests
-import unittest
+from flask import url_for
+from flask_testing import TestCase
 import requests_mock
-from application.models import prizedb
-from application import app, db
+from application import app
 
 class TestBase(TestCase):
     def create_app(self):
-        config_name = 'test'
-        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
+<<<<<<< HEAD
+        app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///",
+        SECRET_KEY='TEST_SECRET_KEY', 
+        DEBUG=True)
         return app
     
     def setUp(self):
-        db.session.commit()
-        db.drop_all()
         db.create_all()
+        testcode = prizedb(code='1234ABcd', reward="Unfortunatly you didnt win this time!")
+        db.session.add(testcode)
+        db.session.commit()
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+=======
+        return app
+>>>>>>> parent of db7d934... test
 
 class TestResponse(TestBase):
     def test_home(self):
@@ -32,7 +32,7 @@ class TestResponse(TestBase):
 
     def test_prize(self):
 
-        response = self.client.get(url_for('prize'), code = "1111AAaa")
+        response = self.client.get(url_for('prize'), amount = "1111AAaa")
         self.assertEqual(response.status_code, 500)
 
     def test_endprize(self):
@@ -41,5 +41,6 @@ class TestResponse(TestBase):
             g.get("http://service2:5001/four_numbers", text="1997")
             g.get("http://service3:5002/four_letters", text="ALex")
             g.get("http://service4:5003/price/1997ALex", text="You win £70000")
-            response = self.client.get(url_for('prize'), follow_redirects=True)
+            response = self.client.get(url_for('prize'))
             self.assertEqual(response.status_code, 200)
+

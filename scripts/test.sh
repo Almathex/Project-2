@@ -5,9 +5,7 @@ python3 -m venv venv
 . venv/bin/activate
 pip3 install pytest
 pip3 install -r requirements.txt
-cd service1
-pytest --cov ./application
-cd ..
+
 cd service2
 pytest --cov ./application
 cd ..
