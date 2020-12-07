@@ -16,13 +16,13 @@ from random import randint
 #    return Response(winning, mimetype= 'text/plain')
 @app.route('/prize2', methods = ['POST'])
 def prize2():
-    code = request.data.decode('utf-8')
-    if code[0] == '1' or code[4] == 'E':
-       winning = 'You won a laptop!'
-    elif code[0] == '2':
-       winning = 'You won a car!'
-    elif code [0] == '4':
-       winning = 'You won a house!'
-    else:
-       winning = "Unfortunatly you didnt win this time!"
-    return Response(winning, mimetype= 'text/plain')                
+   code = request.data.decode('utf-8')
+   if code[0] == '1' or code[4] == 'E':
+      winning = 'You won a laptop!'
+   elif code[0] == '2':
+      winning = 'You won a car!'
+   elif code [0] == '4':
+      winning = 'You won a house!'
+   else:
+      winning = "Unfortunatly you didnt win this time!"
+   return Response(winning, mimetype= 'text/plain')                
