@@ -36,13 +36,13 @@ I neeed 3 new Virtual Machines:
 On the Jenkins machine i started off installing jenkins, once that was complete and set up, I gave jenkins sudo permissions by using sudo visudo and as the jenkins user I installed docker and docker-compose, still as the jenkins user I then generated keys using ssh-keygen -t rsa. I then placed the public key from the jenkins user on the jenkins machine into the Manager and Worker VMs. Once the other two (Manager, Worker) machines where created I used the jenkins machine to ssh into them. I also, still as the jenkins user, did docker login to provide my dockerhub username and password. Then through the jenkins app on port 8080 I set up a webhook for my git repository and enabled it on git, this allows for a rolling update. 
 
 # CI Pipeline
-[pic]
+![CIpipe](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture1234.PNG?raw=True)
 # ERD
-[pic]
+![ERD](https://github.com/Almathex/Project-2/blob/main/Documentation/erd.PNG?raw=True)
 # Trello Board
-[pic]
+![TRELLO](https://github.com/Almathex/Project-2/blob/main/Documentation/trello.PNG?raw=True)
 # Risk Assessment
-[pic]
+![RISK](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture14141.PNG?raw=True)
 # GCP
 I first spun up a virtual machine on GCP with the purpose of creating the app, placing my local machines public key in, I then SSH through VSC to my VM and clone this GIT repository and create services. Once all the services are complete and the app is working successfully push to Github. I then create a new VM to be my jenkins machine.
 # Jenkins Build 
@@ -51,19 +51,23 @@ On my jenkins machine I have to first install and unlock Jenkins, once unlocked 
 In order to make a Jenkins pipeline I need to have a Jenkinsfile for jenkins to read, the pipeline has a number of benefits the main for me is the easily digestible progress tracker, where you can see what stage your build fails at. The Jenkinsfile defines stages and we give it steps for each stage, I choose to execute scripts in my steps as it is easy to impliment. 
 
 Here is a picture of my final jenkins Pipeline:
-[pic]
+![STAGE](https://github.com/Almathex/Project-2/blob/main/Documentation/buildlog.PNG?raw=True)
 
 # Testing 
 The first stage is testing where I pytest each service using pytest --cov ./application after making a venv and installing pytest.
 - service 1 tests are missing as i wrote the tests before adding in a database, and forgot to go back and add them into the script.
 
 service 2,3,4:
-[pic]
+![TEST](https://github.com/Almathex/Project-2/blob/main/Documentation/service4test.PNG?raw=True)
 # Ansible
 The second stage is ansible, which is used to automate the connectivity of a manager and its workers. In order to use ansible I must first create an inventory file in my main directory, this is used to define which VMs is a manager and which are workers, StrictHostKeyChecking=no is also used in the inventory so that jenkins can run asible without getting errors.
 I then need to make a playbook.yaml file and define which hosts (defined in the inventory) will have what roles, i then of course need to make roles directory, and create the directories with the same name as the roles defined in the playbook.yaml. In each of the roles I add a new directory called tasks and in each of the respective task directories I make a main.yaml, making sure the .yaml is the same as the playbooks. In the main.yaml I specify the tasks for any node who is assigned to do, for example, my docker role gets both nodes to install docker and perform the nessesary actions, the master role tells my manager node to set up a docker swarm and export the token, and the worker role tells my worker to join the swarm with the token.
+![SWARM](https://github.com/Almathex/Project-2/blob/main/Documentation/ansible.PNG?raw=True)
 # Docker
 I make Dockerfiles in each service in order to build images of them, exposing servies (1,2,3,4) to port 500(0/1/2/3) respectivly. I then make a docker-compose.yaml which makes use of configuration files to build all of the containers at once and builds and deploys them as a service. In my script for the jenkins Pipeline I login to docker (having previously done so), stop and remove any previously running images, build my new images and push them to DockerHub.
+
+![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot.PNG?raw=True)
+Here are my build logs.
 # Docker Swarm
 I ssh into my swarm manager using StrictHostKeyChecking=no and pull the latest images for my services and clone and move into a directory, I then docker stack deploy accross the swarm using the docker-compose.yaml and giving my stack the name randprize.
 
@@ -71,12 +75,13 @@ I ssh into my swarm manager using StrictHostKeyChecking=no and pull the latest i
 I then spin up a NGINX VM on GCP and create a nginx.conf, I then install docker and docker run an NGINX container.
 # Demo
 Here is the home page for the app, very simple
-[pic]
+![first](https://github.com/Almathex/Project-2/blob/main/Documentation/service1.PNG?raw=True)
 Here is the prize page
-[pic]
+![last](https://github.com/Almathex/Project-2/blob/main/Documentation/service4.PNG?raw=True)
+Yay I won!
 
 # Database
 Here is a working database that persists
-[pic]
+![DB](https://github.com/Almathex/Project-2/blob/main/Documentation/db.PNG?raw=True)
 # Errors
 I had multiple errors throughout this project, it first started with getting the database container set up, an error i have made after setting the database up is leaving sensative infomation in my code. I was also having trouble running NGINX from my jenkins VM so I made another VM only for NGINX which fixed the issue.
