@@ -33,20 +33,24 @@ I have decided to make an prize genereator application. The app should:
 -Use service4 to generate a reward 
 
 # Summary
+Once the app was made I could focus on the backend side, I added a Dockerfile into each of the services to containerize them and made a docker-compose.yaml, I then made ansible related files (Inventory, playbook.yaml and roles/tasks) these help install docker on the (soon-to-be) swarm nodes and then sets up a swarm. I made a Jenkinsfile with scripts so that jenkins can use that to make a pipeline.
 
+I neeed 3 new Virtual Machines: 
+- Jenkins
+- Manager
+- Worker
+On the Jenkins machine i started off installing jenkins, once that was complete and set up, I gave jenkins sudo permissions by using sudo visudo and as the jenkins user I installed docker and docker-compose, still as the jenkins user I then generated keys using ssh-keygen -t rsa. I then placed the public key from the jenkins user on the jenkins machine into the Manager and Worker VMs. Once the other two (Manager, Worker) machines where created I used the jenkins machine to ssh into them. I also, still as the jenkins user, did docker login to provide my dockerhub username and password. Then through the jenkins app on port 8080 I set up a webhook for my git repository and enabled it on git, this allows for a rolling update. 
 
 # CI Pipeline
-Here is the CI Pipeline i used:
-![CIpipe](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/CIpipe.png?raw=True)
 
 # Initial 
 ![Initial ERD](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/WallFinder-ERD.png?raw=True)
 
 # Trello Board
-![Trello Board](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/trelloboard.png?raw=true)
+![Trello Board]
 
 # Risk Assessment
-![Risk Assessment](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/Risk.png?raw=True)
+![Risk Assessment]
 
 # Jenkins Build 
 ![jenkinsBuild](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/Inkedjenkinsbuildtool_LI.jpg?raw=True)
@@ -54,6 +58,8 @@ Here is the CI Pipeline i used:
 # Testing 
 ![testing1](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/test.PNG?raw=True)
 ![Testing](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/pytest.PNG?raw=True)
+
+
 
 # Demo
 Here is the home page for the app

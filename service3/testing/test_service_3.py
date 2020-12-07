@@ -12,4 +12,4 @@ class TestBase(TestCase):
 class TestLetters(TestBase):
     def test_letters(self):
         response = self.client.get(url_for('four_letters'))
-        self.assertEqual(response.status_code,200)
+        self.assertEquals(response.status_code,200)
