@@ -21,9 +21,7 @@ For this project I should have:
 I have decided to make an prize genereator application. The app should:
 
 -Use service1 as a front end
-
 -Use service2 and service3 to generate a random number-letter combination, with service2 being the number part and service3 being the letter part.
-
 -Use service4 to generate a reward 
 
 # Summary
@@ -33,6 +31,7 @@ I neeed 3 new Virtual Machines:
 - Jenkins
 - Manager
 - Worker
+
 On the Jenkins machine i started off installing jenkins, once that was complete and set up, I gave jenkins sudo permissions by using sudo visudo and as the jenkins user I installed docker and docker-compose, still as the jenkins user I then generated keys using ssh-keygen -t rsa. I then placed the public key from the jenkins user on the jenkins machine into the Manager and Worker VMs. Once the other two (Manager, Worker) machines where created I used the jenkins machine to ssh into them. I also, still as the jenkins user, did docker login to provide my dockerhub username and password. Then through the jenkins app on port 8080 I set up a webhook for my git repository and enabled it on git, this allows for a rolling update. 
 
 # ERD
@@ -57,7 +56,7 @@ Here is a picture of my final jenkins Pipeline:
 
 # Testing 
 The first stage is testing where I pytest each service using pytest --cov ./application after making a venv and installing pytest.
-- service 1 tests are missing as i wrote the tests before adding in a database, and forgot to go back and add them into the script.
+(service 1 tests are missing as I wrote the tests before adding in a database, and forgot to go back and add them into the script.)
 
 service 2,3,4:
 ![TEST](https://github.com/Almathex/Project-2/blob/main/Documentation/service4test.PNG?raw=True)
@@ -95,8 +94,8 @@ During the demo I was asked to preform a rolling update, I was able to do this b
 ![jenkwebhook](https://github.com/Almathex/Project-2/blob/main/Documentation/jenk.PNG?raw=True)
 ![gitwebhook](https://github.com/Almathex/Project-2/blob/main/Documentation/webhook.PNG?raw=True)
 
-I am no set up so that any time I push to the repository, jenkins automatically builds and deploys the new version.
-
+I am now set up so that any time I push to the repository, jenkins automatically builds and deploys the new version.
+# Branch
 ![branch](https://github.com/Almathex/Project-2/blob/main/Documentation/branch.PNG?raw=True)
 
 During the demo I merged my develop branch into my main to get the following change, without downtime.
