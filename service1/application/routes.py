@@ -1,4 +1,4 @@
-from application import app #db
+from application import app, db
 from flask import render_template, request, Response, redirect, url_for
 import requests
 from application.models import prizedb
