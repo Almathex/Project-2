@@ -66,7 +66,7 @@ I then need to make a playbook.yaml file and define which hosts (defined in the 
 # Docker
 I make Dockerfiles in each service in order to build images of them, exposing servies (1,2,3,4) to port 500(0/1/2/3) respectivly. I then make a docker-compose.yaml which makes use of configuration files to build all of the containers at once and builds and deploys them as a service. In my script for the jenkins Pipeline I login to docker (having previously done so), stop and remove any previously running images, build my new images and push them to DockerHub.
 
-![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot.PNG?raw=True)
+![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot.png?raw=True)
 Here are my build logs.
 # Docker Swarm
 I ssh into my swarm manager using StrictHostKeyChecking=no and pull the latest images for my services and clone and move into a directory, I then docker stack deploy accross the swarm using the docker-compose.yaml and giving my stack the name randprize.
