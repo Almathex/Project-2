@@ -8,7 +8,7 @@ services:
       published: 5000
       protocol: tcp
     deploy:
-      replicas: 1
+      replicas: 3
     depends_on:
       - database
     environment:
@@ -20,7 +20,7 @@ services:
     - target: 5001
       protocol: tcp
     deploy:
-      replicas: 1
+      replicas: 3
   service3:    
     image: almathex/service3:latest
     build: ./service3 
@@ -28,7 +28,7 @@ services:
     - target: 5002
       protocol: tcp
     deploy:
-      replicas: 1  
+      replicas: 3  
   service4:
     image: almathex/service4:latest
     build: ./service4
@@ -36,7 +36,7 @@ services:
     - target: 5003
       protocol: tcp
     deploy:
-      replicas: 1
+      replicas: 3
   database:
     image: almathex/database:latest
     build: ./database 
