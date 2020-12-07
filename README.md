@@ -43,6 +43,10 @@ On the Jenkins machine i started off installing jenkins, once that was complete 
 ![TRELLO](https://github.com/Almathex/Project-2/blob/main/Documentation/trello.PNG?raw=True)
 # Risk Assessment
 ![RISK](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture14141.PNG?raw=True)
+# Service Infrastructure
+![Infra](https://github.com/Almathex/Project-2/blob/main/Documentation/infa.PNG?raw=True)
+# CI Pipeline
+![CIpipe](https://github.com/Almathex/Project-2/blob/main/Documentation/Capture1234.PNG?raw=True)
 # GCP
 I first spun up a virtual machine on GCP with the purpose of creating the app, placing my local machines public key in, I then SSH through VSC to my VM and clone this GIT repository and create services. Once all the services are complete and the app is working successfully push to Github. I then create a new VM to be my jenkins machine.
 # Jenkins Build 
@@ -65,21 +69,28 @@ I then need to make a playbook.yaml file and define which hosts (defined in the 
 ![SWARM](https://github.com/Almathex/Project-2/blob/main/Documentation/ansible.PNG?raw=True)
 # Docker
 I make Dockerfiles in each service in order to build images of them, exposing servies (1,2,3,4) to port 500(0/1/2/3) respectivly. I then make a docker-compose.yaml which makes use of configuration files to build all of the containers at once and builds and deploys them as a service. In my script for the jenkins Pipeline I login to docker (having previously done so), stop and remove any previously running images, build my new images and push them to DockerHub.
-
 ![LOGS](https://github.com/Almathex/Project-2/blob/main/Documentation/Screenshot.png?raw=True)
 Here are my build logs.
 # Docker Swarm
 I ssh into my swarm manager using StrictHostKeyChecking=no and pull the latest images for my services and clone and move into a directory, I then docker stack deploy accross the swarm using the docker-compose.yaml and giving my stack the name randprize.
-
 # NGINX
-I then spin up a NGINX VM on GCP and create a nginx.conf, I then install docker and docker run an NGINX container.
+I then spin up a NGINX VM on GCP and create a nginx.conf, I then install docker and docker run an NGINX container. 
+![NGINX](https:///github.com/Almathex/Project-2/blob/main/Documentation/infastr.PNG?raw=True)
+Nginx acts as a load balancer and evenly distributes traffic between the manager and worker node.
 # Demo
 Here is the home page for the app, very simple
 ![first](https://github.com/Almathex/Project-2/blob/main/Documentation/service1.PNG?raw=True)
 Here is the prize page
 ![last](https://github.com/Almathex/Project-2/blob/main/Documentation/service4.PNG?raw=True)
 Yay I won!
-
+# Webhook 
+During the demo I was asked to preform a rolling update, I was able to do this by setting up a webhook, first on jenkins then on github using the jenkins ip.
+![jenkwebhook](https://github.com/Almathex/Project-2/blob/main/Documentation/jenk.PNG?raw=True)
+![gitwebhook](https://github.com/Almathex/Project-2/blob/main/Documentation/webhook.PNG?raw=True)
+I am no set up so that any time I push to the repository, jenkins automatically builds and deploys the new version.
+![branch](https://github.com/Almathex/Project-2/blob/main/Documentation/branch.PNG?raw=True)
+During the demo I merged my develop branch into my main to get the following change, without downtime.
+![webhook](https://github.com/Almathex/Project-2/blob/main/Documentation/secondit.PNG?raw=True)
 # Database
 Here is a working database that persists
 ![DB](https://github.com/Almathex/Project-2/blob/main/Documentation/db.PNG?raw=True)
