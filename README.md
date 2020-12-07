@@ -39,10 +39,11 @@ I neeed 3 new Virtual Machines:
 - Jenkins
 - Manager
 - Worker
+
 On the Jenkins machine i started off installing jenkins, once that was complete and set up, I gave jenkins sudo permissions by using sudo visudo and as the jenkins user I installed docker and docker-compose, still as the jenkins user I then generated keys using ssh-keygen -t rsa. I then placed the public key from the jenkins user on the jenkins machine into the Manager and Worker VMs. Once the other two (Manager, Worker) machines where created I used the jenkins machine to ssh into them. I also, still as the jenkins user, did docker login to provide my dockerhub username and password. Then through the jenkins app on port 8080 I set up a webhook for my git repository and enabled it on git, this allows for a rolling update. 
 
 # CI Pipeline
-
+![PIPE](https://github.com/Almathex/Project-2/blob/main/Documentation/pracprojCIPIPE.PNG?raw=True)
 # Initial 
 ![Initial ERD](https://github.com/Almathex/FundamentalProject/blob/main/Documentation/WallFinder-ERD.png?raw=True)
 
