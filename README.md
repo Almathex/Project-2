@@ -27,7 +27,7 @@ I have decided to make an prize genereator application. The app should:
 # Summary
 Once the app was made , I added a Dockerfile into each of the services to containerize them and made a docker-compose.yaml, I then made ansible related files (Inventory, playbook.yaml and roles/tasks) these help install docker on the (soon-to-be) swarm nodes and then sets up a swarm. I made a Jenkinsfile with scripts so that jenkins can use that to make a pipeline.
 
-I neeed 3 new Virtual Machines: 
+I need 3 new Virtual Machines: 
 - Jenkins
 - Manager
 - Worker
