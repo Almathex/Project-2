@@ -6,7 +6,6 @@ from application import app
 
 class TestBase(TestCase):
     def create_app(self):
-<<<<<<< HEAD
         app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///",
         SECRET_KEY='TEST_SECRET_KEY', 
         DEBUG=True)
@@ -21,9 +20,7 @@ class TestBase(TestCase):
     def tearDown(self):
         db.session.remove()
         db.drop_all()
-=======
         return app
->>>>>>> parent of db7d934... test
 
 class TestResponse(TestBase):
     def test_home(self):
