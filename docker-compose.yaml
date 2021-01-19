@@ -10,9 +10,7 @@ services:
     deploy:
       replicas: 1
     depends_on:
-      - database
-    environment:
-      - MYSQL_ROOT_PASSWORD=root  
+      - database  
   service2:
     image: almathex/service2:latest      
     build: ./service2
@@ -46,7 +44,5 @@ services:
     - type: volume
       source: prize_data
       target: /var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root 
 volumes: 
   prize_data:    
